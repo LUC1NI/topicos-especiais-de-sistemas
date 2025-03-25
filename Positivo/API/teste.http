@@ -1,8 +1,10 @@
-#GET http://localhost:5131
-
-#GET http://localhost:5131/1
-
-#GET http://localhost:5131/2
+### Teste
+GET http://localhost:5131
+###
+GET http://localhost:5131/1
+###
+GET http://localhost:5131/2
+###
 POST http://localhost:5131/
 Content-Type: application/json
 
