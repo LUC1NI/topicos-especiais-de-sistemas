@@ -3,20 +3,48 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Namespace;
 
 #nullable disable
 
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20250324235227_Inicial")]
-    partial class Inicial
+    [Migration("20250407235104_AddRelacaoCursoEscola")]
+    partial class AddRelacaoCursoEscola
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+
+            modelBuilder.Entity("API.Modelos.Escola", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Escolas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Humanas"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Exatas"
+                        });
+                });
 
             modelBuilder.Entity("Namespace.Curso", b =>
                 {
@@ -30,7 +58,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Curso");
+                    b.ToTable("Cursos");
                 });
 #pragma warning restore 612, 618
         }
